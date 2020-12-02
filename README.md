@@ -1,2 +1,2 @@
 # django-Notes
-a simple for notes
+a simple app for notes
