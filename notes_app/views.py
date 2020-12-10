@@ -12,6 +12,7 @@ def all_notes(request):
 
 
 
-def detail(request):
+def detail(request,slug):
     #return HttpResponse('<h1> hello werdani </h1>')
-    pass
+    note = Note.objects.get(slug=slug)
+    return render (request,'note_deatil.html',{'note':note})

@@ -3,5 +3,5 @@
 
 <title>all notes</title>
 {% for note in all_notes%}
-{{note}}<br>
+ <a href="{% url 'notes:detail' note.slug%}">{{note}}</a><br>
 {% endfor %}
