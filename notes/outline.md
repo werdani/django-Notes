@@ -7,3 +7,11 @@ create models for nots app :
   -slug
   -user
   
+
+
+  front-end :
+  - home page (nav - crads )
+  - login page
+  - signup page
+  - user profile page 
+  
