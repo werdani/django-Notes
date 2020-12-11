@@ -5,3 +5,5 @@
 {% for note in all_notes%}
  <a href="{% url 'notes:detail' note.slug%}">{{note}}</a><br>
 {% endfor %}
+
+<button><a href="{% url 'notes:not_add'%}">Add new note</a></button>
