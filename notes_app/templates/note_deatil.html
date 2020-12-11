@@ -1,5 +1,11 @@
 <h1>hello in your details note </h1>
+<hr>
 <h2>{{note}}</h2>
 <h3>{{note.content}}</h3>
 <h3>{{note.created}}</h3>
 <h3>{{note.title}}</h3>
+
+<hr>
+<button><a href="{% url 'notes:edit' note.slug%}">Edit</a></button>
+
+<hr>

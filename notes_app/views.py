@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse
 from . models import Note
 from . forms import Noteform
@@ -36,3 +36,26 @@ def not_add(request):
     }
 
     return render(request,'add.html',context)
+
+
+
+
+
+
+def edit(request,slug):
+    note = get_object_or_404(Note,slug=slug)
+    if request.method == 'POST':
+         form = Noteform(request.POST,instance=note)
+         if form.is_valid:
+            new_form = form.save(commit=False)
+            new_form.user = request.user
+            form.save()
+            return redirect('/')
+    else:
+        form = Noteform(instance=note)
+    context = {
+
+        'form':form,
+    }
+
+    return render(request,'edit.html',context)
