@@ -10,7 +10,7 @@ def all_notes(request):
     #return HttpResponse('hello ammar')
     all_notes = Note.objects.all()
 
-    return render(request,'all_notes.html',{'all_notes':all_notes})
+    return render(request,'notes.html',{'all_notes':all_notes})
 
 
 
