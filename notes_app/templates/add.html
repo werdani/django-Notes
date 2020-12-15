@@ -1,11 +1,16 @@
-<h3>Hello Ammar</h3>
-
-<form method="POST">
-    {% csrf_token %}
-    {{form}}<br>
+{% extends "base.html" %}
+{% load static %}
 
 
- <button type="submit" class="btn btn-primary" >Add</button>
-</form>
-
-
+{% block body %}
+    <div class="raw">
+        <form method="POST">
+            {% csrf_token %}
+            <br><br><br>
+            {{form}}<br><hr>
+    
+    
+        <button type="submit" class="btn btn-primary" >Add</button>
+        </form>
+    </div>
+{% endblock body %}
