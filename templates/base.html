@@ -43,7 +43,16 @@
 <a href=""></a><span class="lnr lnr-envelope"></span> <span class="text"><span class="text-primary">ammaryasser554zz@gmail.com</span></span></a>
 </div>
 <div class="col-lg-6 col-sm-6 col-8 header-top-right">
-<a href="#" class="primary-btn text-uppercase">Write Your Notes</a>
+	
+<form class="form-line ml-auto">
+	{% if user.is_authenticated %}
+		<a href="#" class="btn btn-success"> Logout </a>
+		<a href="#" class="primary-btn text-uppercase">Write Your Notes</a>
+	{% else %}
+		<a href="#" class="btn btn-success"> Login </a>
+		<a href="#" class="btn btn-primary"> Signup </a>
+	{% endif %}
+</form>
 </div>
 </div>
 </div>
@@ -55,12 +64,9 @@
 </div>
 <nav id="nav-menu-container">
 <ul class="nav-menu">
-<li><a href="index-2.html">Home</a></li>
-<li><a href="about.html">Contact</a></li>
-<li><a href="features.html">Notes</a></li>
-<li><a href="doctors.html">Login</a></li>
-<li><a href="departments.html">SignUp</a></li>
-<li><a href="departments.html">LogOut</a></li>
+	<li><a href="#">Home</a></li>
+	<li><a href="#">Contact</a></li>
+	<li><a href="#">Notes</a></li>
 </li>
 
 </nav><!-- #nav-menu-container -->
