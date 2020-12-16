@@ -16,6 +16,7 @@ class Profile(models.Model):
     bio        = models.TextField(max_length=500)
     image      = models.ImageField(upload_to='profile_img')
     join       = models.DateTimeField(default=datetime.datetime.now)
+    
 
 
     def save(self,*args,**kwargs):

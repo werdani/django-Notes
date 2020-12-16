@@ -1,8 +1,9 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.forms import UserCreationForm
 from .forms import SignUpForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
+from .models import Profile
 
 # Create your views here.
 def home(request): 
@@ -27,3 +28,10 @@ def login(request):
 
 def change_pass(request):
     return render (request,'change_pass.html',{})
+
+
+def profile(request,slug):
+    profile = get_object_or_404(Profile,slug=slug)
+
+    return render(request,'profile.html',{'profile':profile})
+
