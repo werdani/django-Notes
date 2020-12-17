@@ -22,6 +22,7 @@
     <div class="row">
         
         <button type="submit"><a href="{% url 'accounts:edit' profile.slug %}">Edit Profile</a></button>
+        <button type="submit"><a href="{% url 'accounts:change_password' profile.slug %}">Change Password</a></button>
     </div>
 </div>
 {% endblock body %}

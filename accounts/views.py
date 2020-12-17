@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, redirect, render
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm , PasswordChangeForm
 from .forms import SignUpForm , UserForm , ProfileForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
@@ -25,10 +25,6 @@ def signup(request):
 def login(request): 
 
     return render(request,'login.html',{})
-
-def change_pass(request):
-    return render (request,'change_pass.html',{})
-
 
 def profile(request,slug):
     profile = get_object_or_404(Profile,slug=slug)
@@ -56,4 +52,18 @@ def edit_profile(request,slug):
         }
     return render(request,'editprofile.html',context)
 
-    
+def change_password(request, slug):
+
+    profile = get_object_or_404(Profile,slug=slug)
+
+    if request.method =='POST':
+       password_form = PasswordChangeForm(request.user,request.POST)
+       if password_form.is_valid():
+           password_form.save()
+           return redirect('/')
+
+
+    else:
+        password_form = PasswordChangeForm(request.user)
+
+    return render(request,'changepass.html',{'password_form':password_form})
