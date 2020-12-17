@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.forms import UserCreationForm
-from .forms import SignUpForm
+from .forms import SignUpForm , UserForm , ProfileForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from .models import Profile
@@ -35,3 +35,25 @@ def profile(request,slug):
 
     return render(request,'profile.html',{'profile':profile})
 
+def edit_profile(request,slug):
+    profile = get_object_or_404(Profile,slug=slug)
+    if request.method == "POST":
+        user_form = UserForm(request.POST,instance=request.user)
+        profile_form = ProfileForm(request.POST,request.FILES,instance=profile) #FILES >>becoust i used image
+        if user_form.is_valid() and profile_form.is_valid() :
+            user_form.save()
+            new_profile = profile_form.save()
+            #new_profile.user=request.user
+            #new_profile.save()
+            return redirect('/')
+    else:
+        user_form = UserForm(instance=request.user)
+        profile_form = ProfileForm(instance=profile)
+        context = {
+            'user_form':user_form,
+            'profile_form':profile_form,
+
+        }
+    return render(request,'editprofile.html',context)
+
+    

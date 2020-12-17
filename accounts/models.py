@@ -9,8 +9,6 @@ from django.db.models.signals import post_save
 
 class Profile(models.Model):
     user       = models.OneToOneField(User, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=50)
-    last_name  = models.CharField(max_length=50)
     slug       = models.SlugField(blank=True, null=True)
     headline   = models.CharField(max_length=50)
     bio        = models.TextField(max_length=500)
