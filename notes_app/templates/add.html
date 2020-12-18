@@ -8,6 +8,7 @@
         <form method="POST">
             {% csrf_token %}
             <br><br><br><br>
+            {{ form.media }}
             {% bootstrap_form form %}
     
 
