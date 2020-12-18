@@ -49,8 +49,8 @@
 		<a href="{% url 'accounts:logout'%}" class="btn btn-success"> Logout </a>
 		<a href="{% url 'notes_app:not_add'%}" class="primary-btn text-uppercase">Write Your Notes</a>
 	{% else %}
-		<a href="#" class="btn btn-success"> Login </a>
-		<a href="#" class="btn btn-primary"> Signup </a>
+		<a href="{% url 'accounts:login'%}" class="btn btn-success"> Login </a>
+		<a href="{% url 'accounts:signup'%}" class="btn btn-primary"> Signup </a>
 	{% endif %}
 </form>
 </div>
@@ -63,7 +63,7 @@
 {% if user.is_authenticated %}
 	<a href="{% url 'notes_app:not_add'%}"><img src="{% static 'img/logo_notes.jpg' %}" style="width: 34px; border-radius: 8px;" alt="" title=""/> Quick Notes </a>
 {% else %}
-    <a href="{% url 'accounts:signup'%}"><img src="{% static 'img/logo_notes.jpg' %}" style="width: 34px; border-radius: 8px;" alt="" title=""/> Quick Notes </a>
+    <a href="{% url 'accounts:login'%}"><img src="{% static 'img/logo_notes.jpg' %}" style="width: 34px; border-radius: 8px;" alt="" title=""/> Quick Notes </a>
 {% endif %}
 </div>
 

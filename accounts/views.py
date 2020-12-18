@@ -22,10 +22,6 @@ def signup(request):
             return redirect('/')
     return render(request,'signup.html',{'form':form})
 
-def login(request): 
-
-    return render(request,'login.html',{})
-
 
 def profile(request,slug):
     profile = get_object_or_404(Profile,slug=slug)
