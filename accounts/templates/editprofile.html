@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 {% load static %}
 {% block body %}
 <div class="container">
     <form method="POST">
-        {% csrf_token %}<br><br><br><br>
-        {{user_form}}
-        {{profile_form}}
-    <button type="submit" name="button">Save Change</button>
+        {% csrf_token %}<br><br><br><br><br>
+        <!--{{user_form}}
+            {{profile_form}} -->
+            {% bootstrap_form user_form %}
+            {% bootstrap_form profile_form %}
+
+        {% buttons %}
+                 <button type="submit" class="btn btn-primary">Save Change</button>
+        {% endbuttons %}
     </form>
 </div>
 {% endblock body %}
