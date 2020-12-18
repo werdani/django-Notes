@@ -26,6 +26,7 @@ def login(request):
 
     return render(request,'login.html',{})
 
+
 def profile(request,slug):
     profile = get_object_or_404(Profile,slug=slug)
 
