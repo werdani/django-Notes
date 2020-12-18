@@ -4,6 +4,7 @@ from .forms import SignUpForm , UserForm , ProfileForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from .models import Profile
+from django.contrib import messages
 
 # Create your views here.
 def home(request): 
@@ -19,6 +20,7 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             # login(request, user) when login creat
+            messages.success(request, 'your accounte is created.')
             return redirect('/')
     return render(request,'signup.html',{'form':form})
 
@@ -38,6 +40,7 @@ def edit_profile(request,slug):
             new_profile = profile_form.save()
             #new_profile.user=request.user
             #new_profile.save()
+            messages.success(request, 'Profile edited.')
             return redirect('/')
     else:
         user_form = UserForm(instance=request.user)
@@ -57,6 +60,7 @@ def change_password(request, slug):
        password_form = PasswordChangeForm(request.user,request.POST)
        if password_form.is_valid():
            password_form.save()
+           messages.success(request, 'password change succesfuly.')
            return redirect('/')
 
 

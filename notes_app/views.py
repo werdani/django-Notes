@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from . models import Note
 from . forms import Noteform
 from django.contrib.auth.models import User
+from django.contrib import messages
+
  
 # Create your views here.
 
@@ -27,6 +29,7 @@ def not_add(request):
             new_form = form.save(commit=False)
             new_form.user = request.user
             form.save()
+            messages.success(request, 'Profile details added.')
             return redirect('/')
     else:
         form = Noteform()
@@ -37,11 +40,6 @@ def not_add(request):
 
     return render(request,'add.html',context)
 
-
-
-
-
-
 def edit(request,slug):
     note = get_object_or_404(Note,slug=slug)
     if request.method == 'POST':
@@ -50,6 +48,7 @@ def edit(request,slug):
             new_form = form.save(commit=False)
             new_form.user = request.user
             form.save()
+            messages.success(request, 'Profile edited.')
             return redirect('/')
     else:
         form = Noteform(instance=note)
