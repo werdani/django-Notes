@@ -10,7 +10,8 @@ from django.contrib import messages
 
 def all_notes(request):
     #return HttpResponse('hello ammar')
-    all_notes = Note.objects.all()
+    user = request.user
+    all_notes = Note.objects.filter(user=user)
 
     return render(request,'notes.html',{'all_notes':all_notes})
 

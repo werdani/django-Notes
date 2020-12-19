@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'accounts',
     'bootstrap4',
     'ckeditor',
+    'home',
 ]
 
 MIDDLEWARE = [
