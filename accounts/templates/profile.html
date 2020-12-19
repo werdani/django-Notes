@@ -5,7 +5,7 @@
 <div class="container">
     <center>
         <br><br><br>
-        <img src="{{profile.image.url}}" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
+        <img src=" {% if profile.image%}{{profile.image.url}} {% endif%}" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
         <h3 class="media-heading">{{profile.first_name}}</h3>
         <span><strong>Skills: </strong></span>
             <span class="label label-warning">HTML5/CSS</span>

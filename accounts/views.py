@@ -31,6 +31,8 @@ def profile(request,slug):
     return render(request,'profile.html',{'profile':profile})
 
 def edit_profile(request,slug):
+    user = request.user
+    profile = get_object_or_404(Profile,user=user)
     profile = get_object_or_404(Profile,slug=slug)
     if request.method == "POST":
         user_form = UserForm(request.POST,instance=request.user)
@@ -48,12 +50,13 @@ def edit_profile(request,slug):
         context = {
             'user_form':user_form,
             'profile_form':profile_form,
-
+            'profile':profile
         }
     return render(request,'editprofile.html',context)
 
 def change_password(request, slug):
-
+    user = request.user
+    profile = get_object_or_404(Profile,user=user)
     profile = get_object_or_404(Profile,slug=slug)
 
     if request.method =='POST':
@@ -66,5 +69,11 @@ def change_password(request, slug):
 
     else:
         password_form = PasswordChangeForm(request.user)
+        context = {
+            'password_form':password_form,
+            'profile':profile
 
-    return render(request,'changepass.html',{'password_form':password_form})
+        }
+
+
+    return render(request,'changepass.html',context)
