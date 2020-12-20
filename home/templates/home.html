@@ -15,13 +15,15 @@
 		<div class="row">
 			{% for note in all_notes%}
 			<div class="single-recent-blog col-lg-4 col-md-4">
-				<div class="thumb">
-					<img class="f-img img-fluid mx-auto" src="{% static 'img/notes.png' %}" alt="">
-				</div>
-					<a href="{% url 'notes:detail' note.slug%}">
-					<h4>{{note.title}}</h4>
-					</a>
-					<p>{{note.content|truncatewords:'30'}}</p> <!-- to view a some words only-->
+				   {% if note.img%}
+						<img class="f-img img-fluid mx-auto" src="{% static 'img/notes.png' %}" alt="">
+					{% endif%}
+					<h4>
+						<a href="{% url 'notes:detail' note.slug%}">{{note.title}}</a>
+				    </h4>
+					<p>
+					 {{note.content|truncatewords:'10'}}
+					</p> <!-- to view a some words only-->
 				<div class="bottom d-flex justify-content-between align-items-center flex-wrap">
 					<div>
 						<img class="img-fluid" src="{% static 'img/user.png' %}" style="width: 50px;" alt="">
