@@ -140,3 +140,10 @@ LOGIN_REDIRECT_URL = '/'
 
 #ckeditor config
 CKEDITOR_UPLOAD_PATH = "uploads/"
+
+
+
+
+
+
+
